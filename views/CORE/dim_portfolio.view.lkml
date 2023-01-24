@@ -112,6 +112,11 @@ view: dim_portfolio {
     sql: ${TABLE}."URL_IMAGEN_HOTEL" ;;
   }
 
+  dimension: updated_date {
+    sql: ${TABLE}."FECHA_CARGA" ;;
+    html: {{ rendered_value | date: "%d/%m/%y" }};;
+  }
+
   measure: count {
     type: count
     drill_fields: []
