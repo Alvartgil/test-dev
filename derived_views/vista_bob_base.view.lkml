@@ -1,4 +1,6 @@
-  view: bob_base {
+include: "/models/BoB_Base.model.lkml"
+
+  view: vista_bob_base {
     derived_table: {
       explore_source: Bob_Base {
         column: id_hotel { field: dim_portfolio.id_hotel }
@@ -84,4 +86,10 @@
       description: ""
       type: number
     }
+
+    dimension: comparabilidad {
+      type: string
+      sql: CASE WHEN ${comparado.is_comparable} = 1 AND ${is_comparable} = 1 THEN 'C' ELSE 'NC' END ;;
+    }
+
   }
