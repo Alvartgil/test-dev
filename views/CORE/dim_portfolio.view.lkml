@@ -24,8 +24,8 @@ view: dim_portfolio {
     ]
     convert_tz: no
     datatype: date
-    html: {{ rendered_value | date: "%d/%m/%y" }};;
     sql: ${TABLE}."FECHA_CARGA" ;;
+    html: {{ rendered_value | date: "%d/%m/%y" }};;
   }
 
   dimension_group: fecha_fin_operacion {
