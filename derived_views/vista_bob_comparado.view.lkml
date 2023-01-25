@@ -81,6 +81,7 @@ include: "/**/*BoB_Comparado.model.lkml"
       value_format: "0.0%"
       type: number
     }
+
     dimension: is_comparable {
       description: ""
       type: number
