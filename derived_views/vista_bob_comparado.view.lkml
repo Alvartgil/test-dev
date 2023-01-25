@@ -16,6 +16,9 @@ include: "/**/*BoB_Comparado.model.lkml"
         column: pickup_3_w { field: fct_metricas_agrupadas.pickup_3_w }
         column: pickup_4_w { field: fct_metricas_agrupadas.pickup_4_w }
         column: is_comparable { field: fct_metricas_agrupadas.is_comparable }
+        column: anio_actual  {field: dim_tiempo_mes.anio_actual}
+        column: mes_actual  {field: dim_tiempo_mes.mes_actual}
+        column: mes  {field: dim_tiempo_mes.mes}
         filters: {
           field: dim_tiempo_forecast.fecha_forecast_actual
           value: "Current"
@@ -82,4 +85,17 @@ include: "/**/*BoB_Comparado.model.lkml"
       description: ""
       type: number
     }
+
+    dimension: anio_actual {
+      type: string
+    }
+
+    dimension: mes_actual {
+      type: string
+    }
+
+    dimension: mes {
+      type: string
+    }
+
   }

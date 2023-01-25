@@ -17,6 +17,9 @@ include: "/models/BoB_Base.model.lkml"
         column: pickup_4_w { field: fct_metricas_agrupadas.pickup_4_w }
         column: updated_date { field: dim_portfolio.updated_date }
         column: is_comparable { field: fct_metricas_agrupadas.is_comparable }
+        column: anio_actual  {field: dim_tiempo_mes.anio_actual}
+        column: mes_actual  {field: dim_tiempo_mes.mes_actual}
+        column: mes  {field: dim_tiempo_mes.mes}
         filters: {
           field: dim_tiempo_forecast.fecha_forecast_actual
           value: "Current"
@@ -81,15 +84,28 @@ include: "/models/BoB_Base.model.lkml"
     }
     dimension: updated_date {
       description: ""
+      html: {{ rendered_value | date: "%d/%m/%y" }};;
     }
     dimension: is_comparable {
       description: ""
       type: number
     }
 
+    dimension: anio_actual {
+      type: string
+    }
+
+    dimension: mes_actual {
+      type: string
+    }
+
+    dimension: mes {
+      type: string
+    }
+
     dimension: comparabilidad {
       type: string
-      sql: CASE WHEN ${comparado.is_comparable} = 1 AND ${is_comparable} = 1 THEN 'C' ELSE 'NC' END ;;
+      sql: CASE WHEN ${comparado.is_comparable} = 1 AND ${is_comparable} = 1 THEN 'LfL' ELSE 'Non LfL' END ;;
     }
 
   }

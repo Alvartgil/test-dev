@@ -11,7 +11,8 @@ explore: bob {
     from: vista_bob_comparado
      type: left_outer
      relationship: many_to_one
-     sql_on: ${bob.id_hotel} = ${comparado.id_hotel} ;;
+     sql_on: ${bob.id_hotel} = ${comparado.id_hotel}
+     AND ${bob.mes} = ${comparado.mes};;
 }}
 #
 #   join: users {
