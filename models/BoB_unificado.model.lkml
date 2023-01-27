@@ -70,7 +70,7 @@ explore: bob {
   from: vista_bob_base
   join: comparado {
     from: vista_bob_comparado
-    type: inner #visibilidad
+    type: left_outer
     relationship: many_to_one
     sql_on: ${bob.id_hotel} = ${comparado.id_hotel}
       AND ${bob.mes} = ${comparado.mes};;
