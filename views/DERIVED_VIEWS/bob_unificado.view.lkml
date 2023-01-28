@@ -2,24 +2,25 @@ include: "/models/BoB_unificado.model.lkml"
 
 view: vista_bob_base {
   derived_table: {
-    explore_source: Bob_Base {
-      column: id_hotel { field: dim_portfolio.id_hotel }
-      column: sum_i_habpen { field: fct_metricas_agrupadas.sum_i_habpen }
-      column: sum_i_habpen_mes { field: fct_metricas_agrupadas.sum_i_habpen_mes }
-      column: budget { field: fct_metricas_agrupadas.budget }
-      column: rooms_occupancy { field: fct_metricas_agrupadas.rooms_occupancy }
-      column: adr { field: fct_metricas_agrupadas.adr }
-      column: pickup_d { field: fct_metricas_agrupadas.pickup_d }
-      column: pickup_w { field: fct_metricas_agrupadas.pickup_w }
-      column: pickup_1_w { field: fct_metricas_agrupadas.pickup_1_w }
-      column: pickup_2_w { field: fct_metricas_agrupadas.pickup_2_w }
-      column: pickup_3_w { field: fct_metricas_agrupadas.pickup_3_w }
-      column: pickup_4_w { field: fct_metricas_agrupadas.pickup_4_w }
-      column: updated_date { field: dim_portfolio.updated_date }
+    explore_source: bob_base {
+      column: id_hotel {}
       column: is_comparable { field: fct_metricas_agrupadas.is_comparable }
-      column: anio_actual  {field: dim_tiempo_mes.anio_actual}
-      column: mes_actual  {field: dim_tiempo_mes.mes_actual}
-      column: mes  {field: dim_tiempo_mes.mes}
+      column: i_habpen { field: fct_metricas_agrupadas.i_habpen }
+      column: i_habpen_mes { field: fct_metricas_agrupadas.i_habpen_mes }
+      column: i_habpen_pickup_d { field: fct_metricas_agrupadas.i_habpen_pickup_d }
+      column: i_habpen_pickup_w { field: fct_metricas_agrupadas.i_habpen_pickup_w }
+      column: i_habpen_pickup_1_w { field: fct_metricas_agrupadas.i_habpen_pickup_1_w }
+      column: i_habpen_pickup_2_w { field: fct_metricas_agrupadas.i_habpen_pickup_2_w }
+      column: i_habpen_pickup_3_w { field: fct_metricas_agrupadas.i_habpen_pickup_3_w }
+      column: i_habpen_pickup_4_w { field: fct_metricas_agrupadas.i_habpen_pickup_4_w }
+      column: habitaciones_capacidad { field: fct_metricas_agrupadas.habitaciones_capacidad }
+      column: num_habitaciones { field: fct_metricas_agrupadas.num_habitaciones }
+      column: adr_numerador { field: fct_metricas_agrupadas.adr_numerador }
+      column: adr_denominador { field: fct_metricas_agrupadas.adr_denominador }
+      column: i_totales_budget { field: fct_metricas_agrupadas.i_totales_budget }
+      column: mes_actual { field: dim_tiempo_mes.mes_actual }
+      column: anio_actual { field: dim_tiempo_mes.anio_actual }
+      column: mes { field: dim_tiempo_mes.mes }
       filters: {
         field: dim_tiempo_forecast.fecha_forecast_actual
         value: "Current"
@@ -27,83 +28,120 @@ view: vista_bob_base {
     }
   }
   dimension: id_hotel {
-    description: ""
     type: number
-  }
-  dimension: sum_i_habpen {
-    description: ""
-    type: number
-    value_format: "#,##0"
-  }
-  dimension: sum_i_habpen_mes {
-    description: ""
-    type: number
-  }
-  dimension: budget {
-    description: ""
-    type: number
-  }
-  dimension: rooms_occupancy {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: adr {
-    description: ""
-    value_format: "0.0\%"
-    type: number
-  }
-  dimension: pickup_d {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_1_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_2_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_3_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_4_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-
-  dimension: updated_date {
-    description: ""
-    html: {{ rendered_value | date: "%d/%m/%y" }};;
   }
   dimension: is_comparable {
-    description: ""
     type: number
   }
-
-  dimension: anio_actual {
-    type: string
+  dimension: i_habpen {
+    type: number
   }
-
+  dimension: i_habpen_mes {
+    type: number
+  }
+  dimension: i_habpen_pickup_d {
+    type: number
+  }
+  dimension: i_habpen_pickup_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_1_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_2_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_3_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_4_w {
+    type: number
+  }
+  dimension: habitaciones_capacidad {
+    type: number
+  }
+  dimension: num_habitaciones {
+    type: number
+  }
+  dimension: adr_numerador {
+    type: number
+  }
+  dimension: adr_denominador {
+    type: number
+  }
+  dimension: i_totales_budget {
+    type: number
+  }
   dimension: mes_actual {
     type: string
   }
-
-  dimension: mes {
+  dimension: anio_actual {
     type: string
   }
+  dimension: mes {
+    type: number
+  }
+  measure: sum_i_habpen {
+    value_format: "0"
+    type: number
+    sql: sum(${i_habpen});;
+  }
+  measure: sum_i_habpen_mes {
+    value_format: "0"
+    type: number
+    sql: sum(${i_habpen_mes});;
+  }
+  measure: rooms_occupancy {
+    value_format: "0.0%"
+    type: number
+    sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
+  }
+  measure: adr {
+    value_format: "0.0\%"
+    type: number
+    sql: sum(DIV0(${adr_numerador},${adr_denominador}));;
+  }
+  measure: budget {
+    value_format: "0"
+    type: number
+    sql: sum(${i_totales_budget});;
+  }
+  measure: pickup_d {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_d},${i_habpen_pickup_d}));;
+  }
+
+  measure: pickup_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_w},${i_habpen_pickup_w}));;
+  }
+
+  measure: pickup_1_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_w}-${i_habpen_pickup_1_w},${i_habpen_pickup_1_w}));;
+  }
+
+  measure: pickup_2_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_1_w}-${i_habpen_pickup_2_w},${i_habpen_pickup_2_w}));;
+  }
+
+  measure: pickup_3_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_2_w}-${i_habpen_pickup_3_w},${i_habpen_pickup_3_w}));;
+  }
+
+  measure: pickup_4_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_3_w}-${i_habpen_pickup_4_w},${i_habpen_pickup_4_w}));;
+  }
+
 
   dimension: comparabilidad {
     type: string
@@ -166,25 +204,28 @@ view: vista_bob_base {
 
 }
 
+
 view: vista_bob_comparado {
   derived_table: {
-    explore_source: Bob_Comparado {
-      column: id_hotel { field: dim_portfolio.id_hotel }
-      column: sum_i_habpen { field: fct_metricas_agrupadas.sum_i_habpen }
-      column: sum_i_habpen_mes { field: fct_metricas_agrupadas.sum_i_habpen_mes }
-      column: budget { field: fct_metricas_agrupadas.budget }
-      column: adr { field: fct_metricas_agrupadas.adr }
-      column: rooms_occupancy { field: fct_metricas_agrupadas.rooms_occupancy }
-      column: pickup_d { field: fct_metricas_agrupadas.pickup_d }
-      column: pickup_w { field: fct_metricas_agrupadas.pickup_w }
-      column: pickup_1_w { field: fct_metricas_agrupadas.pickup_1_w }
-      column: pickup_2_w { field: fct_metricas_agrupadas.pickup_2_w }
-      column: pickup_3_w { field: fct_metricas_agrupadas.pickup_3_w }
-      column: pickup_4_w { field: fct_metricas_agrupadas.pickup_4_w }
-      column: is_comparable { field: fct_metricas_agrupadas.is_comparable }
-      column: anio_actual  {field: dim_tiempo_mes.anio_actual}
-      column: mes_actual  {field: dim_tiempo_mes.mes_actual}
-      column: mes  {field: dim_tiempo_mes.mes}
+    explore_source: bob_comparado {
+      column: id_hotel {field: bob_comparado.id_hotel}
+      column: is_comparable {field: fct_metricas_agrupadas.is_comparable }
+      column: i_habpen { field: fct_metricas_agrupadas.i_habpen }
+      column: i_habpen_mes { field: fct_metricas_agrupadas.i_habpen_mes }
+      column: i_habpen_pickup_d { field: fct_metricas_agrupadas.i_habpen_pickup_d }
+      column: i_habpen_pickup_w { field: fct_metricas_agrupadas.i_habpen_pickup_w }
+      column: i_habpen_pickup_1_w { field: fct_metricas_agrupadas.i_habpen_pickup_1_w }
+      column: i_habpen_pickup_2_w { field: fct_metricas_agrupadas.i_habpen_pickup_2_w }
+      column: i_habpen_pickup_3_w { field: fct_metricas_agrupadas.i_habpen_pickup_3_w }
+      column: i_habpen_pickup_4_w { field: fct_metricas_agrupadas.i_habpen_pickup_4_w }
+      column: habitaciones_capacidad { field: fct_metricas_agrupadas.habitaciones_capacidad }
+      column: num_habitaciones { field: fct_metricas_agrupadas.num_habitaciones }
+      column: adr_numerador { field: fct_metricas_agrupadas.adr_numerador }
+      column: adr_denominador { field: fct_metricas_agrupadas.adr_denominador }
+      column: i_totales_budget { field: fct_metricas_agrupadas.i_totales_budget }
+      column: mes_actual { field: dim_tiempo_mes.mes_actual }
+      column: anio_actual { field: dim_tiempo_mes.anio_actual }
+      column: mes { field: dim_tiempo_mes.mes }
       filters: {
         field: dim_tiempo_forecast.fecha_forecast_actual
         value: "Current"
@@ -192,79 +233,118 @@ view: vista_bob_comparado {
     }
   }
   dimension: id_hotel {
-    description: ""
     type: number
   }
-  dimension: sum_i_habpen {
-    description: ""
-    type: number
-    value_format: "#,##0"
-  }
-  dimension: sum_i_habpen_mes {
-    description: ""
-    type: number
-    value_format: "#,##0"
-  }
-  dimension: budget {
-    description: ""
-    type: number
-  }
-  dimension: adr {
-    description: ""
-    value_format: "0.0\%"
-    type: number
-  }
-  dimension: rooms_occupancy {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_d {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_1_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_2_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_3_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-  dimension: pickup_4_w {
-    description: ""
-    value_format: "0.0%"
-    type: number
-  }
-
   dimension: is_comparable {
-    description: ""
     type: number
   }
-
-  dimension: anio_actual {
-    type: string
+  dimension: i_habpen {
+    type: number
   }
-
+  dimension: i_habpen_mes {
+    type: number
+  }
+  dimension: i_habpen_pickup_d {
+    type: number
+  }
+  dimension: i_habpen_pickup_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_1_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_2_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_3_w {
+    type: number
+  }
+  dimension: i_habpen_pickup_4_w {
+    type: number
+  }
+  dimension: habitaciones_capacidad {
+    type: number
+  }
+  dimension: num_habitaciones {
+    type: number
+  }
+  dimension: adr_numerador {
+    type: number
+  }
+  dimension: adr_denominador {
+    type: number
+  }
+  dimension: i_totales_budget {
+    type: number
+  }
   dimension: mes_actual {
     type: string
   }
-
-  dimension: mes {
+  dimension: anio_actual {
     type: string
+  }
+  dimension: mes {
+    type: number
+  }
+  measure: sum_i_habpen {
+    value_format: "0"
+    type: number
+    sql: sum(${i_habpen});;
+  }
+  measure: sum_i_habpen_mes {
+    value_format: "0"
+    type: number
+    sql: sum(${i_habpen_mes});;
+  }
+  measure: rooms_occupancy {
+    value_format: "0.0%"
+    type: number
+    sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
+  }
+  measure: adr {
+    value_format: "0.0\%"
+    type: number
+    sql: sum(DIV0(${adr_numerador},${adr_denominador}));;
+  }
+  measure: budget {
+    value_format: "0"
+    type: number
+    sql: sum(${i_totales_budget});;
+  }
+  measure: pickup_d {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_d},${i_habpen_pickup_d}));;
+  }
+
+  measure: pickup_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_w},${i_habpen_pickup_w}));;
+  }
+
+  measure: pickup_1_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_w}-${i_habpen_pickup_1_w},${i_habpen_pickup_1_w}));;
+  }
+
+  measure: pickup_2_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_1_w}-${i_habpen_pickup_2_w},${i_habpen_pickup_2_w}));;
+  }
+
+  measure: pickup_3_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_2_w}-${i_habpen_pickup_3_w},${i_habpen_pickup_3_w}));;
+  }
+
+  measure: pickup_4_w {
+    value_format: "0.0%"
+    type: number
+    sql: sum(DIV0(${i_habpen_pickup_3_w}-${i_habpen_pickup_4_w},${i_habpen_pickup_4_w}));;
   }
 
 }
