@@ -88,6 +88,10 @@ view: vista_bob_base {
   dimension: mes {
     type: number
   }
+  dimension: visibilidad {
+    type: yesno
+    sql: CASE WHEN ${comparado.is_comparable} is null AND ${is_comparable} is null THEN false ELSE true END ;;
+  }
   measure: sum_i_habpen {
     value_format: "#,##0"
     type: number
