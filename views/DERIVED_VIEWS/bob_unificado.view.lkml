@@ -3,7 +3,7 @@ include: "/models/BoB_unificado.model.lkml"
 view: vista_bob_base {
   derived_table: {
     explore_source: bob_base {
-      column: id_hotel {}
+      column: id_hotel {field: bob_base.id_hotel}
       column: is_comparable { field: fct_metricas_agrupadas.is_comparable }
       column: i_habpen { field: fct_metricas_agrupadas.i_habpen }
       column: i_habpen_mes { field: fct_metricas_agrupadas.i_habpen_mes }
@@ -18,6 +18,7 @@ view: vista_bob_base {
       column: adr_numerador { field: fct_metricas_agrupadas.adr_numerador }
       column: adr_denominador { field: fct_metricas_agrupadas.adr_denominador }
       column: i_totales_budget { field: fct_metricas_agrupadas.i_totales_budget }
+      column: updated_date { field: bob_base.updated_date }
       column: mes_actual { field: dim_tiempo_mes.mes_actual }
       column: anio_actual { field: dim_tiempo_mes.anio_actual }
       column: mes { field: dim_tiempo_mes.mes }
@@ -32,6 +33,12 @@ view: vista_bob_base {
   }
   dimension: is_comparable {
     type: number
+  }
+  dimension: updated_date {
+  }
+  measure: updated {
+    html: {{ rendered_value | date: "%d/%m/%y" }};;
+    sql: max(${updated_date}) ;;
   }
   dimension: i_habpen {
     type: number
@@ -82,17 +89,17 @@ view: vista_bob_base {
     type: number
   }
   measure: sum_i_habpen {
-    value_format: "0"
+    value_format: "#,##0"
     type: number
     sql: sum(${i_habpen});;
   }
   measure: sum_i_habpen_mes {
-    value_format: "0"
+    value_format: "#,##0"
     type: number
     sql: sum(${i_habpen_mes});;
   }
   measure: rooms_occupancy {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
   }
@@ -102,42 +109,42 @@ view: vista_bob_base {
     sql: sum(DIV0(${adr_numerador},${adr_denominador}));;
   }
   measure: budget {
-    value_format: "0"
+    value_format: "#,##0"
     type: number
     sql: sum(${i_totales_budget});;
   }
   measure: pickup_d {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_d},${i_habpen_pickup_d}));;
   }
 
   measure: pickup_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_w},${i_habpen_pickup_w}));;
   }
 
   measure: pickup_1_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_w}-${i_habpen_pickup_1_w},${i_habpen_pickup_1_w}));;
   }
 
   measure: pickup_2_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_1_w}-${i_habpen_pickup_2_w},${i_habpen_pickup_2_w}));;
   }
 
   measure: pickup_3_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_2_w}-${i_habpen_pickup_3_w},${i_habpen_pickup_3_w}));;
   }
 
   measure: pickup_4_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_3_w}-${i_habpen_pickup_4_w},${i_habpen_pickup_4_w}));;
   }
@@ -156,49 +163,49 @@ view: vista_bob_base {
 
   measure: ocp_pp {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${rooms_occupancy},0) - COALESCE(${comparado.rooms_occupancy},0);;
   }
 
   measure: var_pickup_d {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_d},0) - COALESCE(${comparado.pickup_d},0);;
   }
 
   measure: var_pickup_w {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_w},0) - COALESCE(${comparado.pickup_w},0);;
   }
 
   measure: var_pickup_1_w {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_1_w},0) - COALESCE(${comparado.pickup_1_w},0);;
   }
 
   measure: var_pickup_2_w {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_2_w},0) - COALESCE(${comparado.pickup_2_w},0);;
   }
 
   measure: var_pickup_3_w {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_3_w},0) - COALESCE(${comparado.pickup_3_w},0);;
   }
 
   measure: var_pickup_4_w {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: COALESCE(${pickup_4_w},0) - COALESCE(${comparado.pickup_4_w},0);;
   }
 
   measure: av_rate {
     type: number
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     sql: CASE WHEN ${adr} is null or ${comparado.adr} is null THEN null ELSE DIV0(${adr},${comparado.adr})-1 END;;
   }
 
@@ -287,17 +294,17 @@ view: vista_bob_comparado {
     type: number
   }
   measure: sum_i_habpen {
-    value_format: "0"
+    value_format: "#,##0"
     type: number
     sql: sum(${i_habpen});;
   }
   measure: sum_i_habpen_mes {
-    value_format: "0"
+    value_format: "#,##0"
     type: number
     sql: sum(${i_habpen_mes});;
   }
   measure: rooms_occupancy {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
   }
@@ -307,42 +314,42 @@ view: vista_bob_comparado {
     sql: sum(DIV0(${adr_numerador},${adr_denominador}));;
   }
   measure: budget {
-    value_format: "0"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(${i_totales_budget});;
   }
   measure: pickup_d {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_d},${i_habpen_pickup_d}));;
   }
 
   measure: pickup_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen}-${i_habpen_pickup_w},${i_habpen_pickup_w}));;
   }
 
   measure: pickup_1_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_w}-${i_habpen_pickup_1_w},${i_habpen_pickup_1_w}));;
   }
 
   measure: pickup_2_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_1_w}-${i_habpen_pickup_2_w},${i_habpen_pickup_2_w}));;
   }
 
   measure: pickup_3_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_2_w}-${i_habpen_pickup_3_w},${i_habpen_pickup_3_w}));;
   }
 
   measure: pickup_4_w {
-    value_format: "0.0%"
+    value_format: "#,##0.0%"
     type: number
     sql: sum(DIV0(${i_habpen_pickup_3_w}-${i_habpen_pickup_4_w},${i_habpen_pickup_4_w}));;
   }
