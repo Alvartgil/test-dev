@@ -70,6 +70,8 @@ explore: bob_comparado {
 
 
   explore: bob_unificado {
+    sql_always_where: ${bob_unificado.visibilidad} = 'true';;
+    ##always_filter: {filters: [bob_unificado.visibilidad : "true"]}
     from: vista_bob_base
     join: comparado {
       from: vista_bob_comparado
