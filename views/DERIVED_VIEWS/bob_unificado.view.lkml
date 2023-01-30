@@ -24,6 +24,7 @@ view: vista_bob_base {
         field: dim_tiempo_forecast.fecha_forecast_actual
         value: "Current"
       }
+
     }
   }
   dimension: id_hotel {
@@ -163,6 +164,14 @@ view: vista_bob_base {
     value_format: "0.0%"
     sql: CASE WHEN ${adr} is null or ${comparado.adr} is null THEN null ELSE DIV0(${adr},${comparado.adr})-1 END;;
   }
+  filter: filtro_anio_actual {
+    type: string
+    suggest_dimension: anio_actual
+  }
+  filter: filtro_mes_actual {
+    type: string
+    suggest_dimension: mes_actual
+  }
 
 }
 
@@ -265,6 +274,11 @@ view: vista_bob_comparado {
 
   dimension: mes {
     type: string
+  }
+
+  filter: filtro_anio_comparado {
+    type: string
+    suggest_dimension: anio_actual
   }
 
 }

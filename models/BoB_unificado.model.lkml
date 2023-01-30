@@ -66,20 +66,42 @@ explore: Bob_Comparado {
 
 }
 
-explore: bob {
+##explore: bob {
+##  from: vista_bob_base
+##  join: comparado {
+##    from: vista_bob_comparado
+##    type: left_outer
+##    relationship: many_to_one
+##    sql_on: ${bob.id_hotel} = ${comparado.id_hotel} AND
+##      ${bob.mes} = ${comparado.mes} AND
+##      {% condition bob.filtro_anio_actual %} ${bob.anio_actual} {% endcondition %} AND
+##      {% condition bob.filtro_mes_actual %} ${bob.mes_actual} {% endcondition %} AND
+##      {% condition comparado.filtro_anio_comparado %} ${comparado.anio_actual} {% endcondition %};;
+##  }
+##  join: estructura_geografica {
+##    from: dim_estructura_geografica
+##    type: left_outer
+##    relationship: many_to_one
+##    sql_on: ${bob.id_hotel} = ${estructura_geografica.id_hotel};;
+##  }
+
+explore: unificado {
+  from: dim_estructura_geografica
+  join: bob{
   from: vista_bob_base
+  type: left_outer
+  relationship: one_to_many
+  sql_on: ${bob.id_hotel} = ${unificado.id_hotel} AND
+  {% condition bob.filtro_anio_actual %} ${bob.anio_actual} {% endcondition %} AND
+  {% condition bob.filtro_mes_actual %} ${bob.mes_actual} {% endcondition %};;
+  }
   join: comparado {
     from: vista_bob_comparado
     type: left_outer
     relationship: many_to_one
-    sql_on: ${bob.id_hotel} = ${comparado.id_hotel}
-      AND ${bob.mes} = ${comparado.mes};;
-  }
-  join: estructura_geografica {
-    from: dim_estructura_geografica
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${bob.id_hotel} = ${estructura_geografica.id_hotel};;
+    sql_on: ${bob.id_hotel} = ${comparado.id_hotel} AND
+      ${bob.mes} = ${comparado.mes} AND
+      {% condition comparado.filtro_anio_comparado %} ${comparado.anio_actual} {% endcondition %};;
   }
 
 }
