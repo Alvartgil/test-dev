@@ -129,13 +129,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -146,13 +148,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -163,13 +167,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -180,13 +186,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -197,13 +205,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -214,13 +224,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -240,7 +252,8 @@ view: vista_bob_base {
     value_format: "#,##0.0%"
     ##sql: COALESCE(${rooms_occupancy},0) - COALESCE(${comparado.rooms_occupancy},0);;
     sql: ${rooms_occupancy} - ${comparado.rooms_occupancy};;
-    html: <p style="background-color: #aeb0ac">{{ rendered_value }}</p>;;
+    html: <div style="font-size:100%; font-weight: bold; text-align:center">{{ rendered_value }}</div>;;
+    ## linea separacion más gruesa
   }
 
   measure: var_pickup_d {
@@ -250,13 +263,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -267,13 +282,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -284,13 +301,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -301,13 +320,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -318,13 +339,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -335,13 +358,15 @@ view: vista_bob_base {
 
     html:
     {% if value > 0 and value < 0.3 %}
-    <p style="color: #559C03">{{ rendered_value }}</p>
+    <p style="color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > -0.3 and value < 0 %}
-    <p style="color: #B23305">{{ rendered_value }}</p>
+    <p style="color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value > 0.3%}
-    <p style="color: white; background-color: #559C03">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #559C03; font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% elsif value < -0.3%}
-    <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
+    <div style="color: white; background-color: #B23305; font-size:100%; text-align:center">{{ rendered_value }}</div>
+    {% else %}
+    <div style="font-size:100%; text-align:center">{{ rendered_value }}</div>
     {% endif %};;
   }
 
@@ -349,7 +374,8 @@ view: vista_bob_base {
     type: number
     value_format: "#,##0.0%"
     sql: CASE WHEN ${adr} is null or ${comparado.adr} is null THEN null ELSE DIV0(${adr},${comparado.adr})-1 END;;
-    html: <p style="background-color: #aeb0ac">{{ rendered_value }}</p>;;
+    html: <div style="font-size:100%; font-weight: bold; text-align:center">{{ rendered_value }}</div>;;
+    # linea separacion
   }
 
   filter: filtro_anio_actual {
