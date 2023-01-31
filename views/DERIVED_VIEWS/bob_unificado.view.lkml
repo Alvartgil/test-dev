@@ -512,6 +512,5 @@ view: vista_bob_comparado {
   filter: filtro_anio_comparado {
     type: string
     suggest_dimension: anio_actual
-    sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
   }
 }
