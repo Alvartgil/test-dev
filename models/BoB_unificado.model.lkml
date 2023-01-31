@@ -2,7 +2,7 @@ connection: "snowflake_barcelo"
 
 include: "/views/*/*.view.lkml"                # include all views in the views/ folder in this project
 
-explore: Bob_Base {
+explore: bob_base {
   view_name: fct_metricas_agrupadas
   join: dim_portfolio {
     type:  inner
@@ -30,7 +30,7 @@ explore: Bob_Base {
 
 }
 
-explore: Bob_Comparado {
+explore: bob_comparado {
   view_name:  fct_metricas_agrupadas
   join: dim_portfolio {
     type:  inner
@@ -86,6 +86,7 @@ explore: Bob_Comparado {
 ##  }
 
 explore: unificado {
+  sql_always_where: ${bob.visibilidad} = 'true';;
   from: dim_estructura_geografica
   join: bob{
   from: vista_bob_base
