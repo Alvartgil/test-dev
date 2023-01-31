@@ -1,4 +1,4 @@
-connection: "snowflake_barcelo"
+  connection: "snowflake_barcelo"
 
 include: "/views/*/*.view.lkml"                # include all views in the views/ folder in this project
 
@@ -89,12 +89,12 @@ explore: unificado {
   sql_always_where: ${bob.visibilidad} = 'true';;
   from: dim_estructura_geografica
   join: bob{
-  from: vista_bob_base
-  type: left_outer
-  relationship: one_to_many
-  sql_on: ${bob.id_hotel} = ${unificado.id_hotel} AND
-  {% condition bob.filtro_anio_actual %} ${bob.anio_actual} {% endcondition %} AND
-  {% condition bob.filtro_mes_actual %} ${bob.mes_actual} {% endcondition %};;
+    from: vista_bob_base
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${bob.id_hotel} = ${unificado.id_hotel} AND
+        {% condition bob.filtro_anio_actual %} ${bob.anio_actual} {% endcondition %} AND
+        {% condition bob.filtro_mes_actual %} ${bob.mes_actual} {% endcondition %};;
   }
   join: comparado {
     from: vista_bob_comparado

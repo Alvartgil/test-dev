@@ -108,17 +108,20 @@ view: vista_bob_base {
     ##sql:DIV0(sum(${num_habitaciones}),sum(${habitaciones_capacidad}));;
     sql: DIV0NULL(sum(${num_habitaciones}),sum(${habitaciones_capacidad}));;
   }
+
   measure: adr {
     value_format: "0.0\%"
     type: number
     ##sql: DIV0(sum(${adr_numerador}),sum(${adr_denominador})) ;;
     sql: DIV0NULL(sum(${adr_numerador}),sum(${adr_denominador}));;
   }
+
   measure: budget {
     value_format: "#,##0"
     type: number
     sql: sum(${i_totales_budget});;
   }
+
   measure: pickup_d {
     value_format: "#,##0.0%"
     type: number
@@ -220,7 +223,6 @@ view: vista_bob_base {
     <p style="color: white; background-color: #B23305">{{ rendered_value }}</p>
     {% endif %};;
   }
-
 
   dimension: comparabilidad {
     type: string
@@ -360,6 +362,7 @@ view: vista_bob_base {
   }
 
 }
+
 
 view: vista_bob_comparado {
 
@@ -509,6 +512,6 @@ view: vista_bob_comparado {
   filter: filtro_anio_comparado {
     type: string
     suggest_dimension: anio_actual
+    sql:sum(DIV0(${num_habitaciones},${habitaciones_capacidad}));;
   }
-
 }
